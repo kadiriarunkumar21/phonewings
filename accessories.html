@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Accessories - PhoneWings</title><link rel="stylesheet" href="css/style.css"></head><body>
+<header><div class="brand">📱 PhoneWings</div><nav><a href="index.html">Home</a><a href="brands.html">Brands</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></header>
+<main class="container"><h2 id="accTitle">Accessories</h2>
+<div id="accGrid" class="products-grid"></div>
+<div style="margin-top:12px" class="footer">© 2025 PhoneWings | All Rights Reserved</div></main>
+<script>
+function qs(param){const u=new URLSearchParams(location.search);return u.get(param)}
+const brand = qs('brand');
+const model = qs('model');
+document.getElementById('accTitle').textContent = brand && model ? `${brand} ${model} — Accessories` : 'Accessories';
+const sample = [
+  {name:'Premium Tempered Glass',price:249,stock:12,img:'https://i.imgur.com/M4K7J7K.jpg'},
+  {name:'Leather Magnetic Pouch',price:449,stock:4,img:'https://i.imgur.com/dsL6D94.jpg'},
+  {name:'Transparent Back Cover',price:249,stock:20,img:'https://i.imgur.com/86wWbnj.jpg'},
+  {name:'Fast Charger 33W',price:499,stock:5,img:'https://i.imgur.com/FhVY8Si.jpg'}
+];
+const accGrid = document.getElementById('accGrid');
+sample.forEach(p=>{
+  const c=document.createElement('div'); c.className='card';
+  c.innerHTML = `<img src="${p.img}" alt="" style="height:140px"><h3>${p.name}</h3><p class="small">₹${p.price} • ${p.stock} in stock</p><div style="margin-top:8px"><button class="button" onclick="order('${p.name}',${p.price})">Order</button></div>`;
+  accGrid.appendChild(c);
+});
+function order(name,price){
+  const phone='917989136909';
+  const msg=encodeURIComponent(`Hello PhoneWings, I want to order: ${name} for ${brand} ${model}. Price: ₹${price}`);
+  window.open('https://wa.me/'+phone+'?text='+msg,'_blank');
+}
+</script></body></html>

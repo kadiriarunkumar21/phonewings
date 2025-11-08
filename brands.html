@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brands - PhoneWings</title><link rel="stylesheet" href="css/style.css"></head><body>
+<header><div class="brand">📱 PhoneWings</div><nav><a href="index.html">Home</a><a href="brands.html">Brands</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></header>
+<main class="container"><h2>Brands</h2><div id="brandsGrid" class="grid"></div><div style="margin-top:12px" class="footer">© 2025 PhoneWings | All Rights Reserved</div></main>
+<script src="data/models.js"></script>
+<script>
+const brandsGrid = document.getElementById('brandsGrid');
+Object.keys(PHONE_DATA).sort().forEach(b=>{
+  const card = document.createElement('div'); card.className='card';
+  card.innerHTML = `<h3>${b}</h3><p class="small">${PHONE_DATA[b].length} models</p>`;
+  card.onclick = ()=> location.href = `models.html?brand=${encodeURIComponent(b)}`;
+  brandsGrid.appendChild(card);
+});
+</script></body></html>
